@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="WordTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2016-05-02T05:40:13" hostname="epicodus-74.local" time="0.0">
+<testsuite name="WordTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2016-05-02T06:10:05" hostname="epicodus-74.local" time="0.0">
   <properties/>
   <testcase name="Word_createNewInstance_true" classname="WordTest" time="0.0"/>
   <testcase name="Word_instantiatesWithVocanWord_String" classname="WordTest" time="0.0"/>

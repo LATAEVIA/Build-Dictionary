@@ -1,15 +1,11 @@
 <h1>Construct Your Own Dictionary!</h1>
 
-#if ($vocabWord)
-  <p>Vocabulary Word:</p>
-  <p>$word.getVocabWord()</p>
-#else
-  <p>No Vocabulary Word!</p>
-#end
+Current vocabWord:
+  $vocabWord.getVocabWord()
 
 <p>Add a new Vocabulary Word:</p>
 
-<form action="/word" method="get">
+<form action="/word" method="post">
   <label for="vocabWord">Vocabulary Word</label>
   <input id="vocabWord" name="vocabWord" type="text">
 

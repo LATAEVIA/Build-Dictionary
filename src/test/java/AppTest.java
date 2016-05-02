@@ -25,13 +25,13 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Construct Your Own Dictionary!");
   }
 
-  // @Test
-  // public void wordIsCreatedTest() {
-  //   goTo("http://localhost:4567/");
-  //   fill("#vocabWord").with("SavedWord");
-  //   submit(".btn");
-  //   assertThat(pageSource()).contains("Your word has been saved.");
-  // }
+  @Test
+  public void wordIsCreatedTest() {
+    goTo("http://localhost:4567/");
+    fill("#vocabWord").with("Saved Word");
+    submit(".btn");
+    assertThat(pageSource()).contains("Your word has been saved.");
+  }
 
   @Test
   public void WordIsDisplayedTest() {

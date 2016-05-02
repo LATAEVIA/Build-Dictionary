@@ -11,31 +11,21 @@ public class App {
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      model.put("vocabWord", request.session().attribute("vocabWord"));
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/word", (request, response) -> {
+    post("/word", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-      String newVocabWord = request.queryParams("vocabWord");
-      Word newWord = new Word(newVocabWord);
-      String test = newWord.getVocabWord();
-      model.put("test", test);
-      request.session().attribute("test");
-      model.put("template", "templates/fullWords.vtl");
+
+      String vocabWord = request.queryParams("vocabWord");
+      Word newWord = new Word(vocabWord);
+      request.session().attribute("vocabWord", newWord);
+
+      model.put("template", "templates/define.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
-
-    // get("/word", (request, response) -> {
-    //   Map<String, Object> model = new HashMap<String, Object>();
-    //
-    //   String vocabWord = request.queryParams("vocabWord");
-    //   Word newWord = new Word(vocabWord);
-    //   request.session().attribute("vocabWord", newWord);
-    //
-    //   model.put("template", "templates/define.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
 
   }
 }
