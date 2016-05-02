@@ -42,16 +42,16 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("SavedWord");
   }
 
-  // @Test
-  // public void multipleWordsAreDisplayedTest() {
-  //   goTo("http://localhost:4567/");
-  //   fill("#vocabWord").with("Multi Words");
-  //   submit(".btn");
-  //   click("a", withText("Go Back"));
-  //   fill("#vocabWord").with("Words Multi");
-  //   submit(".btn");
-  //   click("a", withText("Go Back"));
-  //   assertThat(pageSource()).contains("Multi Words");
-  //   assertThat(pageSource()).contains("Words Multi");
-  // }
+  @Test
+  public void multipleWordsAreDisplayedTest() {
+    goTo("http://localhost:4567/");
+    fill("#vocabWord").with("Multi Words");
+    submit(".btn");
+    click("a", withText("Go Back"));
+    fill("#vocabWord").with("Words Multi");
+    submit(".btn");
+    click("a", withText("Go Back"));
+    assertThat(pageSource()).contains("Multi Words");
+    assertThat(pageSource()).contains("Words Multi");
+  }
 }
