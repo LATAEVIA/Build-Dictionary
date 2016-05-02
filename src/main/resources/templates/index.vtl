@@ -1,13 +1,10 @@
-<h1>Dictionary</h1>
-#if ($words.size() > 0)
-  <h3>Words:</h3>
-  <ul>
-    #foreach ($word in $words)
-      <li><h5><a href="/word/$word.getID()">$word.getWordName()</a></h5></li>
-    #end
-  </ul>
-#else
-  <h4>No words created. <a href="/word/new">Add a word.</a></h4>
-#end
+<h1>Construct Your Own Dictionary!</h1>
 
-<a href="/word/new">Add word.</a>
+<p>Add a new Task:</p>
+
+<form action="/tasks" method="post">
+  <label for="description">Task Description</label>
+  <input id="description" name="description" type="text">
+
+  <button type="submit" class="btn btn-default">Add task</button>
+</form>
