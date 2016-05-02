@@ -15,5 +15,16 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/word", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
+
+          String vocabWord = request.queryParams("vocabWord");
+          Word newWord = new Word(vocabWord);
+          request.session().attribute("vocabWord", newWord);
+
+          model.put("template", "templates/define.vtl");
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
   }
 }

@@ -22,4 +22,12 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/");
     assertThat(pageSource()).contains("Construct Your Own Dictionary!");
   }
+
+  @Test
+  public void wordIsCreatedTest() {
+    goTo("http://localhost:4567/");
+    fill("#vocabWord").with("SavedWord");
+    submit(".btn");
+    assertThat(pageSource()).contains("Your word has been saved.");
+  }
 }
