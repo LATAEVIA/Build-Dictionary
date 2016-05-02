@@ -1,0 +1,13 @@
+<h1>Dictionary</h1>
+#if ($words.size() > 0)
+  <h3>Words:</h3>
+  <ul>
+    #foreach ($word in $words)
+      <li><h5><a href="/word/$word.getID()">$word.getWordName()</a></h5></li>
+    #end
+  </ul>
+#else
+  <h4>No words created. <a href="/word/new">Add a word.</a></h4>
+#end
+
+<a href="/word/new">Add word.</a>
