@@ -31,7 +31,7 @@ public class AppTest extends FluentTest {
   public void wordIsCreatedTest() {
     goTo("http://localhost:4567/");
     click("a", withText("Add a New Word"));
-    fill("#name").with("Household chores");
+    fill("#name").with("Brew");
     submit(".btn");
     assertThat(pageSource()).contains("has been saved");
   }
@@ -39,45 +39,42 @@ public class AppTest extends FluentTest {
   @Test
   public void wordIsDisplayedTest() {
     goTo("http://localhost:4567/words/new");
-    fill("#name").with("Household chores");
+    fill("#name").with("Brew");
     submit(".btn");
     click("a", withText("View words"));
-    assertThat(pageSource()).contains("Household chores");
+    assertThat(pageSource()).contains("Brew");
   }
 
   @Test
   public void wordShowPageDisplaysName() {
     goTo("http://localhost:4567/words/new");
-    fill("#name").with("Household chores");
+    fill("#name").with("Brew");
     submit(".btn");
     click("a", withText("View words"));
-    click("a", withText("Household chores"));
-    assertThat(pageSource()).contains("Household chores");
+    click("li", withText("Brew"));
+    assertThat(pageSource()).contains("Brew");
   }
 
   @Test
   public void wordDefinitionsFormIsDisplayed() {
     goTo("http://localhost:4567/words/new");
-    fill("#name").with("Shopping");
+    fill("#name").with("Brew");
     submit(".btn");
-    click("a", withText("View words"));
-    click("a", withText("Shopping"));
-    click("a", withText("Add a new definition"));
-    assertThat(pageSource()).contains("Add a definition to Shopping");
+    click("a", withText("Add definition"));
+    assertThat(pageSource()).contains("Add a definition to Brew");
   }
 
   @Test
   public void definitionsIsAddedAndDisplayed() {
     goTo("http://localhost:4567/words/new");
-    fill("#name").with("Banking");
+    fill("#name").with("Cat");
+    submit(".btn");
+    click("a", withText("Add definition"));
+    fill("#wordMeaning").with("el gato");
     submit(".btn");
     click("a", withText("View words"));
-    click("a", withText("Banking"));
-    click("a", withText("Add a new definition"));
-    fill("#wordMeaning").with("Deposit paycheck");
-    submit(".btn");
-    click("a", withText("View words"));
-    click("a", withText("Banking"));
-    assertThat(pageSource()).contains("Deposit paycheck");
+    click("a", withText("Cat"));
+    //gave "org.openqa.selenium.StaleElementReferenceException at AppTest.java:76" because i put click on 'a'. should be 'li'? Too many instances of "Brew?"
+    assertThat(pageSource()).contains("el gato");
   }
 }
